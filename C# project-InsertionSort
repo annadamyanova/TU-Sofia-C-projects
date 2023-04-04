@@ -1,0 +1,127 @@
+using System;
+using System.Linq;
+
+namespace InsertionSort
+{
+    class Program
+    {
+        public static void InsertionSort(int[] array)
+        {
+            int n = array.Length;
+            for (int i = 1; i < n; i++)
+            {
+                int key = array[i];
+                int j = i - 1;
+
+                while (j >= 0 && array[j] > key)
+                {
+                    array[j + 1] = array[j];
+                    j = j - 1;
+                }
+
+                array[j + 1] = key;
+            }
+        }
+        static void Main(string[] args)
+        {
+            Console.Write("Enter array: ");
+            //string[] array = Console.ReadLine().Split(new char[] { ' ', ',' });
+            string[] array = new string[] { "5", "7", "1", "2", "9", "8" };
+            Console.WriteLine(string.Join(" ", array));
+
+            System.Threading.Thread.Sleep(2000);
+
+            Console.Clear();
+
+            int n = array.Length;
+            for (int i = 1; i < n; i++)
+            {
+                Console.WriteLine(string.Join(" ", array));
+
+                System.Threading.Thread.Sleep(3000);
+                Console.Clear();
+
+                string key = array[i];
+                array[i] = "";
+
+                string[] arr = new string[n];
+
+                Console.WriteLine(string.Join(" ", array));
+
+                for (int y = 0; y < n; y++)
+                {
+                    if (y == i)
+                    {
+                        arr[y] = key;
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        break;
+                    }
+                }
+
+                Console.WriteLine(string.Join("  ", arr));
+                Console.ResetColor();
+                System.Threading.Thread.Sleep(2000);
+
+                int j = i - 1;
+
+                while (j >= 0 && int.Parse(array[j]) > int.Parse(key))
+                {
+                    Console.Clear();
+                    array[j + 1] = array[j];
+                    array[j] = "";
+
+                    for (int num = 0; num < n; num++)
+                    {
+                        if (array[num] == array[j + 1])
+                        {
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                            Console.Write($"{array[num]} ");
+                            Console.ResetColor();
+                        }
+                        else
+                        {
+                            Console.Write($"{array[num]} ");
+                        }
+                    }
+
+                    Console.WriteLine();
+
+                    arr = new string[n];
+
+                    for (int y = 0; y < n; y++)
+                    {
+                        if (y == j)
+                        {
+                            arr[y] = key;
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+                            break;
+                        }
+                    }
+                    Console.WriteLine(string.Join("  ", arr));
+                    Console.ResetColor();
+
+                    System.Threading.Thread.Sleep(2000);
+
+                    j = j - 1;
+                }
+
+                array[j + 1] = key;
+
+                System.Threading.Thread.Sleep(1000);
+
+                Console.ResetColor();
+                Console.Clear();
+            }
+
+            Console.WriteLine(string.Join(" ", array));
+            System.Threading.Thread.Sleep(2000);
+            Console.Clear();
+
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("Sorted array: ");
+            Console.ResetColor();
+            Console.WriteLine(string.Join(" ", array));
+        }
+    }
+}
