@@ -1,0 +1,13 @@
+C:\Users\ASUS\source\repos\WindowsFormsProject\bin\Debug\WindowsFormsProject.exe.config
+C:\Users\ASUS\source\repos\WindowsFormsProject\bin\Debug\WindowsFormsProject.exe
+C:\Users\ASUS\source\repos\WindowsFormsProject\bin\Debug\WindowsFormsProject.pdb
+C:\Users\ASUS\source\repos\WindowsFormsProject\obj\Debug\WindowsFormsProject.csproj.AssemblyReference.cache
+C:\Users\ASUS\source\repos\WindowsFormsProject\obj\Debug\WindowsFormsProject.FormScene.resources
+C:\Users\ASUS\source\repos\WindowsFormsProject\obj\Debug\WindowsFormsProject.Properties.Resources.resources
+C:\Users\ASUS\source\repos\WindowsFormsProject\obj\Debug\WindowsFormsProject.RectangleScene.resources
+C:\Users\ASUS\source\repos\WindowsFormsProject\obj\Debug\WindowsFormsProject.SquareScene.resources
+C:\Users\ASUS\source\repos\WindowsFormsProject\obj\Debug\WindowsFormsProject.TriangleScene.resources
+C:\Users\ASUS\source\repos\WindowsFormsProject\obj\Debug\WindowsFormsProject.csproj.GenerateResource.cache
+C:\Users\ASUS\source\repos\WindowsFormsProject\obj\Debug\WindowsFormsProject.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\source\repos\WindowsFormsProject\obj\Debug\WindowsFormsProject.exe
+C:\Users\ASUS\source\repos\WindowsFormsProject\obj\Debug\WindowsFormsProject.pdb
