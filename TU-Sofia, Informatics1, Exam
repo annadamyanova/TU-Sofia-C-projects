@@ -1,0 +1,460 @@
+Задача 2.
+
+using System;
+
+
+
+namespace _02.SecondProblem
+
+{
+
+    class Program
+
+    {
+
+        static void Main(string[] args)
+
+        {
+
+            double n = int.Parse(Console.ReadLine());
+
+
+
+            if (n <= 0)
+
+            {
+
+                Console.WriteLine("Неправилно въведено число.");
+
+            }
+
+
+
+            Console.WriteLine($"Резултатът от рекурсивния вариант е {AthRecursive(n)}");
+
+            Console.WriteLine($"Резултатът от итеративния вариант е {AthIterative(n)}");
+
+        }
+
+
+
+        static double AthRecursive(double n)
+
+        {
+
+            if (n == 1)
+
+            {
+
+                double a = 1;
+
+                double b = 3;
+
+                double result = a / b;
+
+                return result;
+
+            }
+
+            else if (n == 2)
+
+            {
+
+                return 3;
+
+            }
+
+            else if (n == 3)
+
+            {
+
+                return 4;
+
+            }
+
+            else if (n == 4)
+
+            {
+
+                return 5;
+
+            }
+
+
+
+            return 2 * AthRecursive(n - 1) + AthRecursive(n -3) - 3 * AthRecursive(n - 4);
+
+        }
+
+        static double AthIterative(double n)
+
+        {
+
+            if (n == 1)
+
+            {
+
+                int c = 1;
+
+                int d = 3;
+
+                double currResult = (double)c / d;
+
+                return currResult;
+
+            }
+
+            else if (n == 2)
+
+            {
+
+                return 3;
+
+            }
+
+            else if (n == 3)
+
+            {
+
+                return 4;
+
+            }
+
+            else if (n == 4)
+
+            {
+
+                return 5;
+
+            }
+
+
+
+            double a = 1;
+
+            double b = 3;
+
+            double result = a / b;
+
+
+
+            double n1 = result;
+
+            double n2 = 3;
+
+            double n3 = 4;
+
+            double n4 = 5;
+
+            double ni = 0;
+
+            for (int i = 5; i <= n; i++)
+
+            {
+
+                ni = 2 * n4 + n2 - 3 * n1;
+
+                n1 = n2;
+
+                n2 = n3;
+
+                n3 = n4;
+
+                n4 = ni;                
+
+            }
+
+
+
+            return ni;
+
+        }
+
+    }
+
+}
+
+Задача 1.
+
+
+
+using System;
+
+using System.IO;
+
+
+
+namespace _01.FirstProblem
+
+{
+
+    class Program
+
+    {
+
+        static void Main(string[] args)
+
+        {
+
+            Console.WriteLine("Моля въведете път до файла");
+
+
+
+            string fileName = Console.ReadLine();
+
+
+
+            int[,] matrix = InitMatrix(fileName);
+
+            if (matrix == null)
+
+            {
+
+                Console.WriteLine("Грешка при въвеждане на файл");
+
+                return;
+
+            }
+
+            int largestNegative = LargestNegative(matrix);
+
+            Console.WriteLine($"Най-големият отрицателен елемент в матрицата е {largestNegative}");
+
+
+
+            int countEvenOnAntiDiagonal = CountEvenAntiDiagonal(matrix);
+
+            Console.WriteLine($"Броят на четните елементи, лежащи на вторичния диагонал е {countEvenOnAntiDiagonal}");
+
+
+
+            int biggestNumberCount = FindMaxCount(matrix);
+
+            Console.WriteLine($"{biggestNumberCount} пъти се среща най-голямата стойност в матрицата");
+
+
+
+        }
+
+
+
+        static int[,] InitMatrix(string fileName)
+
+        {
+
+            if (!File.Exists(fileName))
+
+            {
+
+                return null;
+
+            }
+
+
+
+            string[] lines = File.ReadAllLines(fileName);
+
+
+
+            if (lines.Length < 1)
+
+            {
+
+                return null;
+
+            }
+
+
+
+            string[] values = lines[0].Split('\t');
+
+            int n = int.Parse(values[0]);
+
+            int[,] matrix = new int[n, n];
+
+
+
+            for (int row = 0; row < n; row++)
+
+            {
+
+                values = lines[row].Split('\t');
+
+                for (int col = 0; col < n; col++)
+
+                {
+
+                    matrix[row, col] = int.Parse(values[col]);
+
+                }
+
+            }
+
+
+
+            return matrix;
+
+        }
+
+
+
+        static int LargestNegative(int[,] matrix)
+
+        {
+
+            
+
+            int[] negatives = new int[] { };
+
+
+
+            for (int row = 0; row < matrix.GetLength(0); row++)
+
+            {
+
+                for (int col = 0; col < matrix.GetLength(1); col++)
+
+                {
+
+                    if (matrix[row, col] < 0)
+
+                    {
+
+                        int index = 0;
+
+                        int num = matrix[row, col];
+
+                        negatives[index] = num;
+
+                        index++;
+
+                    }
+
+                }
+
+            }
+
+
+
+            if (negatives.Length <= 0)
+
+            {
+
+                return 0;
+
+            }
+
+
+
+            int largestNegative = negatives[0];
+
+            for (int i = 1; i < negatives.Length; i++)
+
+            {
+
+                if (negatives[i] > largestNegative)
+
+                {
+
+                    largestNegative = negatives[i];
+
+                }
+
+            }
+
+
+
+            return largestNegative;
+
+        }
+
+        static int CountEvenAntiDiagonal(int[,] matrix)
+
+        {
+
+            int evenCount = 0;
+
+
+
+            for (int i = 0; i < matrix.GetLength(0); i++)
+
+            {
+
+                int antiDiagonalNum = matrix[i, matrix.GetLength(0) - 1 - i];
+
+                if (antiDiagonalNum % 2 == 0)
+
+                {
+
+                    evenCount++;
+
+                }
+
+            }
+
+
+
+            return evenCount;
+
+        }
+
+        static int FindMaxCount(int[,] matrix)
+
+        {
+
+            int biggestNum = matrix[0, 0];
+
+            for (int row = 0; row < matrix.GetLength(0); row++)
+
+            {
+
+                for (int col = 1; col < matrix.GetLength(1); col++)
+
+                {
+
+                    if (matrix[row, col] > biggestNum)
+
+                    {
+
+                        biggestNum = matrix[row, col];
+
+                    }
+
+                }
+
+            }
+
+
+
+            int count = 0;
+
+            for (int row = 0; row < matrix.GetLength(0); row++)
+
+            {
+
+                for (int col = 1; col < matrix.GetLength(1); col++)
+
+                {
+
+                    if (matrix[row, col] == biggestNum)
+
+                    {
+
+                        count++;
+
+                    }
+
+                }
+
+            }
+
+
+
+            return count;
+
+        }
+
+    }
+
+}
+
